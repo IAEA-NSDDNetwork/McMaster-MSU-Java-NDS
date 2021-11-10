@@ -1,0 +1,309 @@
+ 40AR    40CL B- DECAY (1.35 M)        1972KL06,1970KE12                        
+ 40AR  H TYP=FUL$AUT=JUN CHEN and BALRAJ SINGH$CUT=30-SEP-2015$CIT=ENSDF$       
+ 40AR  H TYP=FUL$AUT=JOHN A. CAMERON AND BALRAJ SINGH$CIT=NDS 102, 293 (2004)$  
+ 40AR2 H CUT=10-May-2004$                                                       
+ 40AR c  1972Kl06 (also 1973Kl02,1981HuZT): {+40}Cl ions were produced via      
+ 40AR2c  {+40}Ar(n,p) reaction with E=14 MeV neutron beam on pure natural       
+ 40AR3c  argon target. |g rays were detected with a Ge(Li) detector (FWHM=4 keV 
+ 40AR4c  at 1.33 MeV) and a NaI(Tl) detector. Measured E|g, I|g, |g|g-coin.     
+ 40AR5c  Deduced levels, J, |p, |g-ray branching ratios.                        
+ 40AR c  1970Ke12: {+40}Cl sources were prepared via the {+40}Ar(n,p) reaction  
+ 40AR2c  with E=14.9 MeV neutron produced from the University of Kentucky       
+ 40AR3c  neutron generator. |g rays were detected with Ge(Li) detectors and     
+ 40AR4c  NaI(Tl) detectors. Measured E|g, I|g, |g|g-coin, decay curve.          
+ 40AR5c  Deduced levels, J, |p, |g-ray branching ratios, parent T{-1/2}         
+ 40AR c  Others:                                                                
+ 40AR c  1989Mi03: Measured E|b, |b|g-coin. Deduced mass excess.                
+ 40AR c  1968Hu07, 1965Gr03, 1956Mo39: Measured E|g, I|g. Deduced levels.       
+ 40AR c  Thesis (M.S.) by E.L. Robinson (Purdue, 1958). E|g, I|g data and       
+ 40AR2c  level scheme from this work are quoted by 1970Ke12. This thesis was    
+ 40AR3c  not available to the present evaluators                                
+ 40AR cG E,RI$From 1972Kl06, unless otherwise noted.                            
+ 40AR cG E(A)$From 1981HuZT only, intensity is not available.                   
+ 40AR cG E(B,D),RI(B)$Weighted average from 1972Kl06 and 1970Ke12               
+ 40AR cG E(E)$Placement questioned by 1983Bi08 based on their (|a,p|g) study    
+ 40AR cG RI(Y)$From 1972Kl06, obtained in indirect method.                      
+ 40AR2cG Other: 5 {I3} in 1970Ke12                                              
+ 40AR cG RI(Z)$From |b feeding quoted by 1981HuZT                               
+ 40AR cB IB$Deduced by evaluators from imbalance of |g-ray intensities at each  
+ 40AR2cB level using the GTOL program.                                          
+ 40AR cL E$From a least-squares fit to |g-ray energies.                         
+ 40AR cL E(K)$Level considered as improbable based on results of (|a,p|g)       
+ 40AR2cL study of 1983Bi08                                                      
+ 40AR cL E(L)$Level considered as improbable since the decay mode is very       
+ 40AR2cL different from that in (|a,p|g) (1983Bi08) from a level near the       
+ 40AR3cL same energy                                                            
+ 40AR cL E(C)$From 1981HuZT only                                                
+ 40AR cL J$From Adopted Levels                                                  
+ 40AR DG CC$FROM BrIcc v2.3a (10-Sep-2014) 2008Ki07, "Frozen Orbitals" appr.    
+ 40AR CG MR$IF NO VALUE GIVEN IT WAS ASSUMED MR=1.00 FOR E2/M1,                 
+ 40AR2CG MR=1.00 FOR E3/M2 AND MR=0.10 FOR THE OTHER MULTIPOLARITIES            
+ 40CL  P 0            2-               1.35 M    2              7482      32    
+ 40CL cP J,T$From Adopted Levels of {+40}Cl                                     
+ 40CL cP QP$From 2012Wa38.                                                      
+ 40AR  N  0.81     4           1.0       1.0                                    
+ 40AR cN NR$From |S(I|g to g.s.)=95.5 {I45}, obtained by assuming |b{+-} feeding
+ 40AR2cN to g.s. is <9% (see comments for g.s. |b{+-} branching ratio) which is 
+ 40AR3cN equivalent to 4.5% {I45}. Singles |b{+-} spectrum of 1989Mi03 shows    
+ 40AR4cN some g.s feeding. But its precise value is unknown.                    
+ 40AR PN                                                                     4  
+ 40AR  L 0            0+               STABLE                                   
+ 40AR  B              9      LT             9.8  GT                          1U 
+ 40ARS B EAV=3500 16                                                            
+ 40AR cB E$7390 {I118} (1989Mi03)                                               
+ 40AR cB IB$only available experimental value is 9% from E.L. Robinson          
+ 40AR2cB (M.S. thesis, Purdue, 1958). This value has been quoted in several     
+ 40AR3cB papers (1989Mi03,1981HuZT,1972Kl06,1970Ke12) and in Endt's             
+ 40AR4cB compilations. 1970Ke12 quoted I|b=9-18%, again based on Robinson's     
+ 40AR5cB data, suggesting equal feedings to the ground state and the first      
+ 40AR6cB excited state. The singles |b spectrum of 1989Mi03 does show that      
+ 40AR7cB there is a direct feeding to the ground state, but in the opinion      
+ 40AR8cB of the evaluators, precise feeding is not known.                       
+ 40AR9CB LOGF1UT>8.5 expected for first-forbidden unique transition allows      
+ 40ARACB up to 100% feeding                                                     
+ 40AR  L 1460.78    5 2+                                                        
+ 40AR  B              4      4              7.2   GT                           ?
+ 40ARS B EAV=2774 16                                                            
+ 40AR  G 1460.73   5  100      E2                      1.03E-4              B   
+ 40ARS G  KC=2.63E-5 4$LC=2.15E-6 3$MC=2.10E-7 3                                
+ 40ARS G  IPC=7.41E-5 11                                                        
+ 40AR  L 2120.82   19 0+                                                        
+ 40AR  G 660.1     4  3.1     3[E2]                    2.09E-4              B   
+ 40ARS G  KC=0.000192 3$LC=1.575E-5 23$MC=1.534E-6 22                           
+ 40AR  L 2524.03   12 2+                                                        
+ 40AR  B              1.7     5            7.5   1                              
+ 40ARS B EAV=2253 16                                                            
+ 40AR  G     1063.1 2  2.9    3M1+E2     -0.41   +6-13                      B   
+ 40AR  G 2524.1    2  2.5     3E2                      5.79E-4              B   
+ 40ARS G  KC=9.52E-6 14$LC=7.77E-7 11$MC=7.58E-8 11                             
+ 40ARS G  IPC=0.000569 8                                                        
+ 40AR  L 2892.70   22 4+                                                        
+ 40AR  B              0.7    2             9.5   1                           1U 
+ 40ARS B EAV=2085 16                                                            
+ 40AR  G 369.0     6  0.02    1[E2]                    1.41E-3                  
+ 40ARS G  KC=0.001291 20$LC=0.0001065 17$MC=1.035E-5 16                         
+ 40AR  G    1432.1 4  2.0     2 E2                                          B   
+ 40ARS G  CC=9.45E-5 14$KC=2.74E-5 4$LC=2.24E-6 4$MC=2.19E-7 3                  
+ 40ARS G  IPC=6.46E-5 10                                                        
+ 40AR  L 3207.89   14 2+                                                        
+ 40AR  B              2.1     4            7.2    1                             
+ 40ARS B EAV=1919 16                                                            
+ 40AR  G 315.0     5  0.03    1[E2]                    0.00249                  
+ 40ARS G  KC=0.00229 4$LC=0.000189 3$MC=1.83E-5 3                               
+ 40AR  G  1087.6    4 0.10    5 [E2]                                            
+ 40AR  G 1746.5    2  3.3     3M1+E2     +0.11   7     1.65E-43             B   
+ 40ARS G  KC=1.633E-5 24$LC=1.334E-6 19$MC=1.302E-7 19                          
+ 40ARS G  IPC=0.0001476 23                                                      
+ 40AR  G 3208.2    3  0.6     1[E2]                    8.79E-4                  
+ 40ARS G  KC=6.47E-6 9$LC=5.28E-7 8$MC=5.15E-8 8                                
+ 40ARS G  IPC=0.000872 13                                                       
+ 40AR  L 3511.18   25    2+                                                     
+ 40AR  B              0.9    2             7.4   1                              
+ 40ARS B EAV=1771 16                                                            
+ 40AR  G  303.0    6  0.07    4                                                 
+ 40AR  G 621.1     6  0.3    LT[E2]                    2.51E-4              &   
+ 40ARF G FL=2892.70                                                             
+ 40ARS G  KC=0.000230 4$LC=1.89E-5 3$MC=1.84E-6 3                               
+ 40AR  G 2050.5    4  1.3     2M1(+E2)   -0.05   11    2.82E-45                 
+ 40ARS G  KC=1.247E-5 18$LC=1.018E-6 15$MC=9.94E-8 14                           
+ 40ARS G  IPC=0.000269 4                                                        
+ 40AR  G 3511.0    5  0.20    8[E2]                    1.00E-3                  
+ 40ARS G  KC=5.63E-6 8$LC=4.60E-7 7$MC=4.49E-8 7                                
+ 40ARS G  IPC=0.000996 14                                                       
+ 40AR  L 3680.53   14 3-                                                        
+ 40AR  B              4.6    11            6.6   1                              
+ 40ARS B EAV=1689 16                                                            
+ 40AR  G 472.0     4   0.3    1[E1]                    1.64E-4                  
+ 40ARS G  KC=0.0001501 22$LC=1.229E-5 18$MC=1.198E-6 17                         
+ 40AR  G      788.1 3 1.0     1 [E1]                                        B   
+ 40AR  G     1156.2 4 0.6     1 [E1]                                            
+ 40ARS G  CC=5.43E-5 8$KC=2.07E-5 3$LC=1.690E-6 24$MC=1.649E-7 24               
+ 40ARS G  IPC=3.18E-5 5                                                         
+ 40AR  G 2220.0    2  8.6    12E1(+M2)   -0.07   +5-11 7.97E-419            B   
+ 40ARS G  KC=7.4E-6 3$LC=6.04E-7 24$MC=5.89E-8 23                               
+ 40ARS G  IPC=0.000789 20                                                       
+ 40AR  L 3918.82   13 2+                                                        
+ 40AR  B              5.5    12            6.4   1                              
+ 40ARS B EAV=1573 16                                                            
+ 40AR  G 239.0     3  0.28   13[E1]                    1.13E-3              B   
+ 40ARS G  KC=0.001040 15$LC=8.51E-5 13$MC=8.28E-6 12                            
+ 40AR  G     1394.7 3 1.5     2                                                 
+ 40AR  G 1797.8    2  2.7     4[E2]                    2.36E-4              B   
+ 40ARS G  KC=1.743E-5 25$LC=1.424E-6 20$MC=1.390E-7 20                          
+ 40ARS G  IPC=0.000217 3                                                        
+ 40AR  G 2457.7    4  5.8    10M1+E2                   0.000505             B   
+ 40ARS G  KC=9.6E-6 4$LC=7.9E-7 3$MC=7.7E-8 3                                   
+ 40ARS G  IPC=0.00049 5                                                         
+ 40AR CG MR$<-0.3 OR GT +6 from (P,P'G)                                         
+ 40AR  G 3918.6    2  4.8     5E2                      1.15E-3              B   
+ 40ARS G  KC=4.79E-6 7$LC=3.90E-7 6$MC=3.81E-8 6                                
+ 40ARS G  IPC=0.001141 16                                                       
+ 40AR DG $it is seen from the gamma spectrum in 1972Kl06 that the 3919          
+ 40AR2DG single-escape peak+full-energy peak is much stronger than the 2458     
+ 40AR3DG peak. It is possible that the intensity of 3919 single-escape peak is  
+ 40AR4DG not taken into account for the total intensity of the 3919 gamma-ray   
+ 40AR5DG by 1972Kl06.                                                           
+ 40AR  L    3941.9120                                                       K  ?
+ 40AR  B              0.16    5            7.9   2                             ?
+ 40ARS B EAV=1562 16                                                            
+ 40AR  G 3941.7     2  0.20   5                                             E  ?
+ 40AR  L 4082.60   17 3-                                                        
+ 40AR DL J$ 1989MI03 GIVE 1-, 1981HUZT GIVE (2,3)-                              
+ 40AR  B              13.8   15            5.9    1                             
+ 40ARS B EAV=1494 16                                                            
+ 40AR cB E$3070 {I100} (1989Mi03) from |b(2622|g)                               
+ 40AR  G 1558.7    4  0.60    7[E1]                    3.25E-4                  
+ 40ARS G  KC=1.246E-5 18$LC=1.017E-6 15$MC=9.93E-8 14                           
+ 40ARS G  IPC=0.000311 5                                                        
+ 40AR  G 2621.7    2  18.1   16[E1]                    1.04E-3              B   
+ 40ARS G  KC=5.86E-6 9$LC=4.78E-7 7$MC=4.66E-8 7                                
+ 40ARS G  IPC=0.001034 15                                                       
+ 40AR  G 4082.1    8  0.30    6[E3]                    9.21E-4                  
+ 40ARS G  KC=5.95E-6 9$LC=4.85E-7 7$MC=4.74E-8 7                                
+ 40ARS G  IPC=0.000914 13                                                       
+ 40AR  L     4178.9 3                                                       K  ?
+ 40AR  B              0.24    6            7.6   1                             ?
+ 40ARS B EAV=1448 16                                                            
+ 40AR  G 4178.7     3  0.30   7                                             E  ?
+ 40AR  L 4301.01   23 (1,3)-                                                    
+ 40AR  B              27      5            5.5    1                             
+ 40ARS B EAV=1389 16                                                            
+ 40AR cB E$3086 {I75} (1989Mi03) from |b(2840|g)                                
+ 40AR  G  621.1    6  0.3    LT                                             &   
+ 40AR  G     1092.9 8 0.33    7 [E1]                                        B   
+ 40AR  G 1776.9    8  0.020   3[E1]                    4.91E-4                  
+ 40ARS G  KC=1.017E-5 15$LC=8.30E-7 12$MC=8.10E-8 12                            
+ 40ARS G  IPC=0.000480 7                                                        
+ 40AR  G 2840.1    3  34     5 [E1]                    1.17E-3              B   
+ 40ARS G  KC=5.27E-6 8$LC=4.30E-7 6$MC=4.19E-8 6                                
+ 40ARS G  IPC=0.001162 17                                                       
+ 40AR  L 4324.5     3 2+                                                        
+ 40AR  B              0.16    5            7.7   2                              
+ 40ARS B EAV=1377 16                                                            
+ 40AR  G 4324.2    3  0.20    5[E2]                    1.29E-3                  
+ 40ARS G  KC=4.15E-6 6$LC=3.38E-7 5$MC=3.30E-8 5                                
+ 40ARS G  IPC=0.001285 18                                                       
+ 40AR  L 4359.5     9                                                       K  ?
+ 40AR  B              0.24   8             7.5   2                             ?
+ 40ARS B EAV=1360 16                                                            
+ 40AR  G 4357.6    3  0.50   7                                              E  ?
+ 40AR  L     4481.0 3  1-                                                   K  ?
+ 40AR  B              0.24   6             7.4   1                             ?
+ 40ARS B EAV=1302 16                                                            
+ 40AR  G 4480.7    3  0.30   7 D                                            E  ?
+ 40AR  L 4562.28   17 (1,3)-                                                    
+ 40AR  B              22.6   21            5.4    1                             
+ 40ARS B EAV=1263 16                                                            
+ 40AR cB E$2729 {I145} (1989Mi03) from |b(3101|g)                               
+ 40AR  G     261.2 7  1.0     1                                             B   
+ 40AR  G     479.9 4  1.1     2                                             B   
+ 40AR  G      643.6 3 8.3     6                                             B   
+ 40AR  G      881.3 3 3.2     3                                             B   
+ 40AR  G     1051.1 5 0.6     1                                                 
+ 40AR  G     1353.7 5 0.25   10                                                 
+ 40AR  G   3101.7  4  14.0   20                                             D   
+ 40AR2 G FLAG=Y                                                                 
+ 40AR  L 4582.0     8  (3-)                                                 K  ?
+ 40AR  B              0.17   7             7.5   2                             ?
+ 40ARS B EAV=1254 16                                                            
+ 40AR  G 222.5     5  0.20   6                                                 ?
+ 40AR  G 4580.1    5  0.10   4 [E3]                    1.07E-3              E  ?
+ 40ARS G  KC=4.93E-6 7$LC=4.02E-7 6$MC=3.93E-8 6                                
+ 40ARS G  IPC=0.001064 15                                                       
+ 40AR  L     4737.8 4                                                       K  ?
+ 40AR  B              0.41    9            7.0   1                             ?
+ 40ARS B EAV=1179 16                                                            
+ 40AR  G 4737.5    4  0.5     1                                             E  ?
+ 40AR  L 4769.0     3 1-                                                        
+ 40AR  B              0.49    9            6.9    1                             
+ 40ARS B EAV=1164 16                                                            
+ 40AR  G     4768.7 3 0.6     1                                                 
+ 40AR  L 4943.3     6                                                       K  ?
+ 40AR  G 361.3     5   0.09   2                                                ?
+ 40AR  G 381.0     5   0.10   4                                                ?
+ 40AR  L     5165.7 7 (2)+                                                      
+ 40AR  B              0.9    1             6.3    1                             
+ 40ARS B EAV=975 16                                                             
+ 40AR  G     3704.6 8 1.0     1                                                 
+ 40AR  G  5165.5   10 0.10    5                                                 
+ 40AR  L 5269.6     3 (1-,3-)                                                   
+ 40AR  B              2.1     3            5.9    1                             
+ 40ARS B EAV=926 15                                                             
+ 40AR  G     1186.7 4 0.9     1                                                 
+ 40AR  G     1589.0 3 1.2     2                                             B   
+ 40AR  G    2063.0 10 0.5     2                                                 
+ 40AR  L     5310.010 (2+)                                                  L  ?
+ 40AR  B              0.16    9            7.0   3                             ?
+ 40ARS B EAV=907 15                                                             
+ 40AR  G 5309.6    10  0.2    1                                                ?
+ 40AR  L     5400.5 8   1-                                                      
+ 40AR  B              0.16    7            6.9   2                              
+ 40ARS B EAV=865 15                                                             
+ 40AR  G 5400.1    8  0.20    8                                                 
+ 40AR  L     5609.4 8 (1,2,3)                                                   
+ 40AR  B              0.41   19            6.3   2                              
+ 40ARS B EAV=767 15                                                             
+ 40AR  G    4147.7 10 1.1     1                                                 
+ 40AR  L     5629.410                                                       L  ?
+ 40AR  B              0.08   4             7.0   2                             ?
+ 40ARS B EAV=758 15                                                             
+ 40AR  G 5629.0    10  0.10  5                                                 ?
+ 40AR  L     5717.810                                                           
+ 40AR  B              0.08   4             6.9   2                              
+ 40ARS B EAV=717 15                                                             
+ 40AR  G 3193.7    10  0.10  5                                                  
+ 40AR  L     5880.1 4 1-                                                        
+ 40AR  B              5.2     5            4.9    1                             
+ 40ARS B EAV=642 15                                                             
+ 40AR  G  270                                                               A   
+ 40AR  G     1317.2 5 0.50    6                                                 
+ 40AR  G     1579.9 8 0.4     1                                                 
+ 40AR  G     3356.6 8 0.4     1                                                 
+ 40AR  G    3759.9 10 0.10    3                                                 
+ 40AR  G   5879.6  12 5.0     4                                             B   
+ 40AR  L     5905.9 7  (1-)                                                     
+ 40AR  B              0.65    9            5.8    1                             
+ 40ARS B EAV=631 15                                                             
+ 40AR  G 3784.9    6  0.8     1                                                 
+ 40AR  L     5950.510  (1,2)                                                    
+ 40AR  B              0.041  25             6.9   3                             
+ 40ARS B EAV=610 15                                                             
+ 40AR  G 5950.0    10  0.05   3                                                 
+ 40AR  L 6053.6     8 1(-)                                                      
+ 40AR  B              0.32    6            5.9    1                             
+ 40ARS B EAV=563 15                                                             
+ 40AR  G     6053.1 8 0.40    6                                                 
+ 40AR  L     6133.510                                                       C  ?
+ 40AR  B              0.04   AP             6.7  AP                             
+ 40ARS B EAV=527 15                                                             
+ 40AR cB IB$from 1981HuZT                                                       
+ 40AR  G 6133         0.05   AP                                             A  ?
+ 40AR2 G FLAG=Z                                                                 
+ 40AR  L     6208.5 8  (1,2)                                                    
+ 40AR  B              0.041  25             6.6   3                             
+ 40ARS B EAV=494 15                                                             
+ 40AR  G 6208.0    8  0.05   3                                                  
+ 40AR  L 6276.7    10  (1-,2-,3-)                                              ?
+ 40AR CL E$this level is constructed by 1972Kl06 only based on a 1333-keV       
+ 40AR2CL transition to a level at 4943 which is considered as improbable by     
+ 40AR3CL 1983Bi08 in (A,PG). Therefore, the evaluators have considered          
+ 40AR3CL this level as questionable as well.                                    
+ 40AR  B              0.32   6             5.6   1                             ?
+ 40ARS B EAV=464 15                                                             
+ 40AR  G 1333.4    8  0.40   7                                                 ?
+ 40AR CG E$this transition connects to a level at 4943 which is considered      
+ 40AR2CG as improbable by 1983Bi08 in (A,PG). Therefore, the evaluators         
+ 40AR3CG have considered it as questionable as well.                            
+ 40AR  L     6338.711 1(-)                                                      
+ 40AR  B              0.26    8            5.6   2                              
+ 40ARS B EAV=436 15                                                             
+ 40AR  G   6338.2  11 0.32    9                                             B   
+ 40AR  L     6476.1 8 1(-)                                                      
+ 40AR  B              0.16    3            5.6   1                              
+ 40ARS B EAV=376 14                                                             
+ 40AR  G     6475.5 8 0.20    3                                                 
+ 40AR  L     6651.7 8                                                          ?
+ 40AR  B              0.49   17            4.8   2                             ?
+ 40ARS B EAV=301 14                                                             
+ 40AR  G 1042.3    3  0.6     2                                                ?
+                                                                                
