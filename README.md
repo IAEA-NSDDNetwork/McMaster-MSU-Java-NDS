@@ -7,6 +7,9 @@ Please address any feedback to Jun Chen chenj@nscl.msu.edu
 
 ## Change history
 
+#### 2021-12
+Few bug fixes, e.g., missing flagged footnotes in delayed particle tables.
+
 #### 2021-03
 Bug fix: in datasets where there are bands based on different unknown levels X and Y, gamma rays from some member states in those bands could be mistakenly identified as unplaced transitions by the previous version
 
