@@ -7,7 +7,10 @@ Please address any feedback to Jun Chen chenj@nscl.msu.edu
 
 ## Change history
 
-#### 2021-12
+#### 2021-12-19
+Fixed a bug that causes limits in continuation records not being printed correctly.
+
+#### 2021-12-09
 Few bug fixes, e.g., missing flagged footnotes in delayed particle tables.
 
 #### 2021-03
