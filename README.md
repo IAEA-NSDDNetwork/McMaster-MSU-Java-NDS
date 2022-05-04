@@ -7,6 +7,9 @@ Please address any feedback to Jun Chen chenj@nscl.msu.edu
 
 ## Change history
 
+#### 2022-04-02
+Regular update with some minor bug fixes and improvements.
+
 #### 2021-12-19
 Fixed a bug that causes limits in continuation records not being printed correctly.
 
