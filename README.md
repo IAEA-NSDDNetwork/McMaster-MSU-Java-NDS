@@ -7,6 +7,9 @@ Please address any feedback to Jun Chen chenj@nscl.msu.edu
 
 ## Change history
 
+#### 2022-08-18
+Few bug fixes, e.g., in-table comment lines at page bottom being printed again at the top of next page
+
 #### 2022-06-30
 Regular update with some minor bug fixes.
 
@@ -44,7 +47,7 @@ Version 1.8
 Version 1.7
 
 #### 2017-07
-Version 1.6 and xls2ens
+Version 1.6
 
 #### 2017-06 
 Version 1.5_01
