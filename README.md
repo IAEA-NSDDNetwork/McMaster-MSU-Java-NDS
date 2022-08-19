@@ -1,9 +1,9 @@
-# Java-NDS 
-NSDF publishing code. From an ENSDF file, produces a Nuclear Data Sheet pdf. 
+# McMaster-MSU Java-NDS 
+NDS publishing code. From an ENSDF file, produces a Nuclear Data Sheet pdf. 
 
-Java-NDS is part of the [ENSDF Analysis and Utility Programs](https://nds.iaea.org/public/ensdf_pgm/).
+McMaster-MSU Java-NDS is part of the [ENSDF Analysis and Utility Programs](https://nds.iaea.org/public/ensdf_pgm/).
 
-Please address any feedback to Jun Chen chenj@nscl.msu.edu
+Please address any feedback to Jun Chen chenj@frib.msu.edu
 
 ## Change history
 
