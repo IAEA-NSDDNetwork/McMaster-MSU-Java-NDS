@@ -7,6 +7,9 @@ Please address any feedback to Jun Chen chenj@frib.msu.edu
 
 ## Change history
 
+#### 2022-09-29
+Bug fix
+
 #### 2022-08-18
 Few bug fixes, e.g., in-table comment lines at page bottom being printed again at the top of next page
 
