@@ -8,7 +8,7 @@ Please address any feedback to Jun Chen chenj@frib.msu.edu
 ## Change history
 
 #### 2023-03-01
-Add an option for auto-correction of keynumbers with incorrect letter-case in PDF output.
+Add an option for auto-correction of keynumbers with incorrect letter-case for PDF output.
 Right click on "Create LaTeX File" button to get this option.
 
 #### 2023-02-09
