@@ -8,6 +8,10 @@ Please address any feedback to Jun Chen chenj@frib.msu.edu
 ## Change history
 
 #### 2023-03-01
+Fix rounding issue of BR without uncertainty in normalization record, which rounds up BR to keep 3 digits after it is multiplied by 100.
+All digits should be kept as they are in the BR record.
+
+#### 2023-03-01
 Add an option for auto-correction of keynumbers with incorrect letter-case for PDF output.
 Right click on "Create LaTeX File" button to get this option.
 
