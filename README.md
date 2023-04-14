@@ -9,7 +9,8 @@ Please address any feedback to Jun Chen chenj@frib.msu.edu
 
 #### 2023-04-14
 Revised to display dataset title as "EC+B+" if Q(EC)>1020 keV or 
-"EC" if Q(EC)<=1020 for decay mode="EC" in DSID based on Q(EC) 
+"EC" if Q(EC)<=1020 for decay mode="EC" in DSID based on Q(EC), the
+same way the label of decay mode has been displayed.
 
 #### 2023-03-20
 Fix a bug that the last comment in a table page is duplicated at the beginning of next page. 
