@@ -7,6 +7,9 @@ Please address any feedback to Jun Chen chenj@frib.msu.edu
 
 ## Change history
 
+#### 2023-05-25
+Bug fixes and improvements
+
 #### 2023-04-14
 Revised to display dataset title as "EC+B+" if Q(EC)>1020 keV or 
 "EC" if Q(EC)<=1020 for decay mode="EC" in DSID based on Q(EC), the
