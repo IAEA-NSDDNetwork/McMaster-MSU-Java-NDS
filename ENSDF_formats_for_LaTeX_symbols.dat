@@ -83,7 +83,7 @@ Levels, gammas     Levels, Gammas
 ~o                 \"{o}
 ~q                 \~{o}
 ~u                 \"{u}
-~'                 \"{A}
+~'                 \ensuremath{\AA}
 ~*                 \ensuremath{\cdot}
 ~@                 \ensuremath{\bullet}
 ! various symbols
