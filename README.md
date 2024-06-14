@@ -11,7 +11,7 @@ Please address any feedback to Jun Chen chenj@frib.msu.edu
 CRITICAL UPDATE:
 update NSR retrieval methods (for retrieving reference infomation when generating the reference list) with the new NSR search engine (online Jun 2024). 
 
-Note that all previous versions using the old NSR search engine are no longer working for retrieving reference information due to offline of the old NSR.
+Note that all previous versions using the old NSR search engine are no longer working for retrieving reference information due to offline of the old NSR. Other functions of this code remain uneffected by this change.
 
 #### 2024-05-21
 Minor improvements
