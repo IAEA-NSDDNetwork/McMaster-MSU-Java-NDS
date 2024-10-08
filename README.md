@@ -7,6 +7,9 @@ Please address any feedback to Jun Chen chenj@frib.msu.edu
 
 ## Change history
 
+#### 2024-08
+Minor improvements
+
 #### 2024-06
 CRITICAL UPDATE:
 update NSR retrieval methods (for retrieving reference information when generating the reference list) with the new NSR search engine (online Jun 2024). 
