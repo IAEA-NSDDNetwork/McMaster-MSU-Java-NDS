@@ -13,10 +13,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Push to Their Organization
+      - name: Push to IAEA Organization
         env:
-          TOKEN: ${{ secrets.THEIR_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.THEIR_GITHUB_TOKEN }}
+          REPO_NAME: ${{ github.event.repository.name }}
         run: |
-            git remote add their-org "https://oauth2:${GH_TOKEN}@github.com/IAEA-NSDDNetwork/${REPO_NAME}.git"
-            git push -f --all their-org
-            git push -f --tags their-org
+          echo "Pushing to: IAEA-NSDDNetwork/${REPO_NAME}"
+          git remote add their-org "https://oauth2:${GH_TOKEN}@github.com/IAEA-NSDDNetwork/${REPO_NAME}.git"
+          git push -f --all their-org
+          git push -f --tags their-org
