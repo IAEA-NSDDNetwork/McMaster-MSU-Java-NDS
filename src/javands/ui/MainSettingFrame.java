@@ -1,0 +1,887 @@
+/*Created by Roy Zywina 2007
+ * Updated by Scott Geraedts most recently on May 4, 2010
+ */
+package javands.ui;
+
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
+import ensdfparser.nds.config.NDSConfig;
+import ensdfparser.nds.control.NDSControl;
+import ensdfparser.nds.ensdf.MassChain;
+
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+
+import java.awt.Font;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+
+/**
+ * Creates the GUI for the production of metapost drawings, specifically 
+ * band,level and decay drawings
+ */
+public class MainSettingFrame extends javax.swing.JFrame {
+    
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		EnsdfWrap curEnsdf; //the ensdf we're working with
+        OptionTree tree; //files tree on the left side
+        javands.main.Run run;
+        MassChain data;
+        boolean skeletonMade;        
+    
+    public MainSettingFrame(MassChain mass,EnsdfWrap [] ensw,javands.main.Run r) {
+        run=r;
+        data=mass;
+
+        initComponents();
+        tree=new OptionTree();
+        ensTree.setModel(tree);
+        tree.reset(ensw);
+        ensTree.updateUI();
+        skeletonMade=false;
+        
+        //set up the default fields 
+        Portrait_Button.setSelected(true);
+        radioButton2.setSelected(true);
+
+        if(javands.main.Setup.outdir==null){
+            javands.main.Setup.outdir=System.getProperty("user.dir")+"//out";
+        }
+        widthField.setText(Float.toString(NDSConfig.getChartWidth()));
+        heightField.setText(Float.toString(NDSConfig.getChartHeight()));
+        plsField.setText(Float.toString(NDSConfig.levelLabelScale));
+        bgsField.setText(Float.toString(NDSConfig.bandGap));
+        labelField.setText(Float.toString(NDSConfig.bandLabelScale));
+        
+        
+    }
+    
+    public EnsdfWrap getCurEnsdf(){
+        return curEnsdf;
+    }
+    
+    
+    private void setTableRenderer(JTable bandTable){
+    	
+    	
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        
+        bandTable.getColumnModel().getColumn(0).setCellRenderer(leftRenderer);
+        //bandTable.getColumnModel().getColumn(1).setCellRenderer(renderer);
+        bandTable.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+
+        bandTable.getColumnModel().getColumn(0).setPreferredWidth(170);
+        bandTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+        bandTable.getColumnModel().getColumn(2).setPreferredWidth(50);   
+
+    	((DefaultTableCellRenderer)bandTable.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+    }
+    /** runs every time a new ENSDF dataset is selected, sets up the interface */
+    public void setCurrentEnsdfFile(EnsdfWrap ew){
+        //sets the endsf file to be whatever has been selected
+        curEnsdf=ew;
+        
+        
+        //debug
+        //System.out.println("In MainSetting: line 101:"+(ew.bandTableModel==null)+(ew.drawBand==null));
+        
+        NDSConfig.bandWidths=run.calcBandWidths(ew.ens);
+        bandTable.setModel(ew.bandModel(NDSConfig.bandWidths));
+        bandTable.getColumnModel().getColumn(0).setPreferredWidth(11);
+        
+        
+        JTextField jtext=new JTextField();
+        
+        jtext.setFont(new Font("Serif",Font.PLAIN,11));
+        
+        javax.swing.table.TableCellEditor editor=new DefaultCellEditor(jtext);
+
+        bandTable.getColumnModel().getColumn(0).setCellEditor(editor);
+        bandTable.getColumnModel().getColumn(2).setCellEditor(editor);
+        
+        bandTable.setRowHeight(18);
+        bandTable.setRowMargin(-1);
+        
+        setTableRenderer(bandTable);  
+        
+        
+        //Config.reset();
+        
+        NDSConfig.mpost=curEnsdf.ens.nucleus().A()+curEnsdf.ens.nucleus().EN()+".mp";
+        widthField.setText(Float.toString(NDSConfig.getChartWidth()));
+        heightField.setText(Float.toString(NDSConfig.getChartHeight()));
+        plsField.setText(Float.toString(NDSConfig.levelLabelScale));
+        bgsField.setText(Float.toString(NDSConfig.bandGap));
+        labelField.setText(Float.toString(NDSConfig.bandLabelScale));
+        
+        tableControlPanel.setENSDF(ew);
+        drawingCreatorPanel.setENSDF(ew);
+      
+    }
+
+
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        new javax.swing.ButtonGroup();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ensTree = new javax.swing.JTree();
+        jPanel2 = new javax.swing.JPanel();
+        tabbedPane = new javax.swing.JTabbedPane();
+        tabbedPane.setBorder(null);
+        jPanel3 = new javax.swing.JPanel();
+        jPanel3.setBorder(new EmptyBorder(0, 0, 0, 0));
+        Portrait_Button = new javax.swing.JRadioButton();
+        Landscape_Button = new javax.swing.JRadioButton();
+        radioButton1 = new JRadioButton();
+        radioButton2 = new JRadioButton();
+        radioButton3 = new JRadioButton();
+        
+        Output_Button = new javax.swing.JButton();
+        Output_Button.setToolTipText("Generate a Metapost figure file of the band drawing for the selected dataset.");
+        Path_Label = new javax.swing.JLabel();
+        include_Button = new javax.swing.JButton();
+        include_Button.setToolTipText("Include the generated band drawing into the output file.");
+
+        widthLabel = new javax.swing.JLabel();
+        heightLabel = new javax.swing.JLabel();
+        portraitLabelSizeLabel = new javax.swing.JLabel();
+        bandGapSizeLabel = new javax.swing.JLabel();
+        widthField = new javax.swing.JTextField();
+        heightField = new javax.swing.JTextField();
+        plsField = new javax.swing.JTextField();
+        bgsField = new javax.swing.JTextField();
+        labelLabel = new javax.swing.JLabel();
+        labelField = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        bandTable = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        GroupLayout gl_jPanel2 = new GroupLayout(jPanel2);
+        gl_jPanel2.setHorizontalGroup(
+        	gl_jPanel2.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_jPanel2.createSequentialGroup()
+        			.addGap(4)
+        			.addComponent(tabbedPane)
+        			.addGap(11))
+        );
+        gl_jPanel2.setVerticalGroup(
+        	gl_jPanel2.createParallelGroup(Alignment.LEADING)
+        		.addComponent(tabbedPane, Alignment.TRAILING)
+        );
+        jPanel2.setLayout(gl_jPanel2);
+        
+        jSplitPane1.setDividerLocation(180);
+
+        ensTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
+                ensTreeValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(ensTree);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+        );
+        
+        jSplitPane1.setLeftComponent(jPanel1);
+
+        buttonGroup1.add(Portrait_Button);
+        Portrait_Button.setText("Portrait"); // NOI18N
+        Portrait_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Portrait_ButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(Landscape_Button);
+        Landscape_Button.setText("Landscape"); // NOI18N
+        Landscape_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Landscape_ButtonActionPerformed(evt);
+            }
+        });
+
+        
+        buttonGroup2.add(radioButton1);
+        radioButton1.setText("show all");
+        radioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	NDSControl.isBandSettingModified=true;
+            	if(curEnsdf!=null){
+            		curEnsdf.etd.getBandDrawingControl().setShowAllGammaLables(true);
+            		curEnsdf.etd.getBandDrawingControl().setSupGammaLabels(false);	
+            	}
+            	
+            	if(chckbxApplyToAll.isSelected()){
+                	for(int j=0;j<data.nENSDF();j++){
+                		data.getETD(j).getBandDrawingControl().setShowAllGammaLables(true);
+                		data.getETD(j).getBandDrawingControl().setSupGammaLabels(false);
+                	}
+            	}
+            }
+        });
+
+        
+        buttonGroup2.add(radioButton2);
+        radioButton2.setText("fit to show");
+        radioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	NDSControl.isBandSettingModified=true;
+            	if(curEnsdf!=null){
+            		curEnsdf.etd.getBandDrawingControl().setShowAllGammaLables(false);
+            		curEnsdf.etd.getBandDrawingControl().setSupGammaLabels(false);	
+            	}
+            	
+            	if(chckbxApplyToAll.isSelected()){
+                	for(int j=0;j<data.nENSDF();j++){
+                		data.getETD(j).getBandDrawingControl().setShowAllGammaLables(false);
+                		data.getETD(j).getBandDrawingControl().setSupGammaLabels(false);
+                	}
+            	}
+            }
+        });
+        
+        buttonGroup2.add(radioButton3);
+        radioButton3.setText("do not show");
+        radioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	NDSControl.isBandSettingModified=true;
+            	if(curEnsdf!=null){
+            		curEnsdf.etd.getBandDrawingControl().setShowAllGammaLables(false);
+            		curEnsdf.etd.getBandDrawingControl().setSupGammaLabels(true);	
+            	}
+            	
+            	if(chckbxApplyToAll.isSelected()){
+                	for(int j=0;j<data.nENSDF();j++){
+                		data.getETD(j).getBandDrawingControl().setShowAllGammaLables(false);
+                		data.getETD(j).getBandDrawingControl().setSupGammaLabels(true);
+                	}
+            	}
+
+            }
+        });
+        
+        chckbxApplyToAll = new JCheckBox("apply to all data sets");
+        chckbxApplyToAll.addChangeListener(new ChangeListener() {
+        	public void stateChanged(ChangeEvent evt) {
+        		if(curEnsdf!=null && ((JCheckBox)evt.getSource()).isSelected()){
+                	for(int j=0;j<data.nENSDF();j++){
+                		data.getETD(j).getBandDrawingControl().setShowAllGammaLables(curEnsdf.etd.getBandDrawingControl().showAllGammaLabels());
+                		data.getETD(j).getBandDrawingControl().setSupGammaLabels(curEnsdf.etd.getBandDrawingControl().supGammaLabels());
+                	}
+        		}
+        	}
+        });
+        chckbxApplyToAll.setSelected(true);
+        
+        
+        Output_Button.setText("Generate band"); // NOI18N
+        Output_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Output_ButtonActionPerformed(evt);
+            }
+        });
+
+        include_Button.setText("Include in File");
+        include_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                include_ButtonActionPerformed(evt);
+            }
+        });
+        
+        bandTable.setModel(new DefaultTableModel(
+        	new Object[][] {
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        		{null, null, null},
+        	},
+        	new String[] {
+        		"Band Label", "Draw?","Band Width"
+        	}
+        ));
+        
+        setTableRenderer(bandTable);    
+        
+        jScrollPane2.setViewportView(bandTable);
+        
+        panel = new JPanel();
+        
+
+        widthLabel.setText("Figure width (cm):");
+        heightLabel.setText("Figure height (cm):");
+        portraitLabelSizeLabel.setText("Level Label Scale:");
+        bandGapSizeLabel.setText("Band Gap Size (cm):");
+
+        widthField.setText("   ");
+        widthField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                widthFieldActionPerformed(evt);
+            }
+        });
+
+        heightField.setText("jTextField2");
+        heightField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                heightFieldActionPerformed(evt);
+            }
+        });
+
+        plsField.setText("jTextField3");
+        plsField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plsFieldActionPerformed(evt);
+            }
+        });
+
+        bgsField.setText("jTextField5");
+        bgsField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bgsFieldActionPerformed(evt);
+            }
+        });
+
+        labelLabel.setText("Band Label Scale:");
+
+        labelField.setText("jTextField1");
+        labelField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                labelFieldActionPerformed(evt);
+            }
+        });
+        
+        JLabel lblGlobalBandSettings = new JLabel();
+        lblGlobalBandSettings.setFont(new Font("SansSerif", Font.PLAIN, 13));
+        lblGlobalBandSettings.setText("Global band settings:");
+        //
+       
+        GroupLayout gl_panel = new GroupLayout(panel);
+        gl_panel.setHorizontalGroup(
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_panel.createSequentialGroup()
+        					.addGap(8)
+        					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        						.addGroup(gl_panel.createSequentialGroup()
+        							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+        								.addComponent(bandGapSizeLabel, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+        								.addComponent(portraitLabelSizeLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        								.addComponent(labelLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+        								.addComponent(labelField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(bgsField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(plsField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(heightField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+        								.addComponent(widthField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)))
+        						.addComponent(heightLabel, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(widthLabel, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
+        				.addComponent(lblGlobalBandSettings, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap(19, Short.MAX_VALUE))
+        );
+        gl_panel.setVerticalGroup(
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addGap(9)
+        			.addComponent(lblGlobalBandSettings)
+        			.addGap(18)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(widthLabel)
+        				.addComponent(widthField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(heightLabel)
+        				.addComponent(heightField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(portraitLabelSizeLabel)
+        				.addComponent(plsField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(bandGapSizeLabel)
+        				.addComponent(bgsField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(labelField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(labelLabel))
+        			.addContainerGap(96, Short.MAX_VALUE))
+        );
+        panel.setLayout(gl_panel);
+        
+        
+        JLabel lblOrientation = new JLabel("Orientation:");
+        
+        JLabel lblDrawGammaEnergy = new JLabel("Draw gamma energy:");
+        
+        btnDrawBandOnly = new JButton();       
+        btnDrawBandOnly.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent evt) {
+        		drawBandOnly(evt);
+        	}
+        });
+        
+        btnDrawBandOnly.setToolTipText("Draw only the bands in output file. Double-click to create and view a PDF output.");
+        btnDrawBandOnly.setText("Draw band only");
+        
+
+
+        GroupLayout jPanel3Layout = new GroupLayout(jPanel3);
+        jPanel3Layout.setHorizontalGroup(
+        	jPanel3Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel3Layout.createSequentialGroup()
+        			.addGap(15)
+        			.addGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(Output_Button, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnDrawBandOnly, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE))
+        			.addGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel3Layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(lblDrawGammaEnergy, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+        						.addGroup(jPanel3Layout.createParallelGroup(Alignment.TRAILING, false)
+        							.addComponent(radioButton1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        							.addComponent(radioButton2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+        						.addComponent(radioButton3, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(chckbxApplyToAll, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)))
+        				.addGroup(jPanel3Layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+        					.addComponent(include_Button, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+        					.addGap(50)
+        					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 248, GroupLayout.PREFERRED_SIZE)))
+        			.addContainerGap(281, Short.MAX_VALUE))
+        		.addGroup(jPanel3Layout.createSequentialGroup()
+        			.addGap(3)
+        			.addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 347, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(587, Short.MAX_VALUE))
+        		.addGroup(jPanel3Layout.createSequentialGroup()
+        			.addGap(15)
+        			.addComponent(Landscape_Button)
+        			.addGap(818))
+        		.addGroup(jPanel3Layout.createSequentialGroup()
+        			.addGap(15)
+        			.addComponent(Portrait_Button, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+        			.addGap(833))
+        		.addGroup(jPanel3Layout.createSequentialGroup()
+        			.addGap(15)
+        			.addComponent(lblOrientation, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+        			.addGap(828))
+        		.addGroup(jPanel3Layout.createSequentialGroup()
+        			.addComponent(Path_Label)
+        			.addGap(923))
+        );
+        jPanel3Layout.setVerticalGroup(
+        	jPanel3Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel3Layout.createSequentialGroup()
+        			.addGap(0, 9, Short.MAX_VALUE)
+        			.addGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING, false)
+        				.addComponent(jScrollPane2, 0, 0, Short.MAX_VALUE)
+        				.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(Path_Label))
+        			.addGap(20)
+        			.addGroup(jPanel3Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblOrientation)
+        				.addComponent(lblDrawGammaEnergy))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(jPanel3Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(Portrait_Button)
+        				.addComponent(radioButton1))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(jPanel3Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(Landscape_Button)
+        				.addComponent(radioButton2))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(radioButton3)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(chckbxApplyToAll)
+        			.addGap(31)
+        			.addComponent(Output_Button)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(btnDrawBandOnly)
+        				.addComponent(include_Button))
+        			.addGap(30))
+        );
+        
+        jPanel3.setLayout(jPanel3Layout);
+        
+        tableControlPanel=new TableControlPanel(data,curEnsdf,run);      
+        tabbedPane.addTab("Table settings", tableControlPanel);
+        
+
+
+        headerSettingPanel=new HeaderSettingPanel(data,run);
+        tabbedPane.addTab("Header settings", headerSettingPanel);
+        
+        
+        tabbedPane.addTab("Band creator", jPanel3);
+
+        drawingCreatorPanel = new DrawingCreatorPanel(data,curEnsdf,run);
+        tabbedPane.addTab("Drawing creator", drawingCreatorPanel);
+        
+        jSplitPane1.setRightComponent(jPanel2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        layout.setHorizontalGroup(
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addComponent(jSplitPane1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addComponent(jSplitPane1, GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+        );
+        getContentPane().setLayout(layout);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void Landscape_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Landscape_ButtonActionPerformed
+        ensdfparser.nds.config.NDSConfig.portrait=false;
+    }//GEN-LAST:event_Landscape_ButtonActionPerformed
+
+    private void Portrait_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Portrait_ButtonActionPerformed
+        ensdfparser.nds.config.NDSConfig.portrait=true;
+    }//GEN-LAST:event_Portrait_ButtonActionPerformed
+
+    
+    private void Output_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Output_ButtonActionPerformed
+        //call the rest of the program to actually produce the output  
+        EnsdfWrap ew=getCurEnsdf();
+        String temp="";
+        try{
+            ew.setConfig();//finalize the settings specified by the user
+            ew.setBands();
+            int i=tree.getIndexOfChild(ew,ew);
+            temp=run.drawBandChartsNorm(0,i,data.getETD(i).getBandDrawingControl());//return filename
+            
+            //System.out.println(data.getETD(i).getBandDrawingControl().isDrawn());
+            if(temp.length()==0){
+            	JOptionPane.showMessageDialog(this,"Selected dataset has no band");
+            }
+            else{
+            	NDSControl.isBandCreated=true;
+            	
+            	data.getETD(i).getBandDrawingControl().setIsBandCreated(true);
+            	//draw bands only for selected data sets and set isDrawn=false for all other data sets
+            	//for(int j=0;j<data.nENSDF();j++){
+            	//	data.getETD(j).getBandDrawingControl().setDrawn(false);
+            	//}
+            	
+            }
+        }catch(NullPointerException e1){
+                e1.printStackTrace();
+                JOptionPane.showMessageDialog(this,"Null Pointer: Make sure a file is selected from " +
+                        "the tree on the left and that that file has bands");
+        }catch(ArrayIndexOutOfBoundsException e2){
+                e2.printStackTrace();
+                JOptionPane.showMessageDialog(this,"Array out of bounds when creating output");
+        }catch(Exception e3){
+                e3.printStackTrace();
+                JOptionPane.showMessageDialog(this,e3);
+        }
+    }//GEN-LAST:event_Output_ButtonActionPerformed
+
+    private void ensTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_ensTreeValueChanged
+    //a dataset has been selected, set it as the current ensdf
+       javax.swing.tree.TreePath tp=ensTree.getSelectionPath();
+       Object o=tp.getLastPathComponent();
+
+       
+       if(o==null || o.getClass()!=EnsdfWrap.class){
+    	   curEnsdf=null;
+    	   tableControlPanel.setENSDF(null);
+    	   drawingCreatorPanel.setENSDF(null);
+    	   return;
+       }
+       
+       if(o.getClass()==EnsdfWrap.class)
+           setCurrentEnsdfFile((EnsdfWrap)o);
+    }//GEN-LAST:event_ensTreeValueChanged
+
+    private void widthFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_widthFieldActionPerformed
+        //the functions for the second pane just change the corresponding configuration values
+        float d=NDSConfig.getChartWidth();
+        try{d=Float.parseFloat(widthField.getText());}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"please enter a number");
+        }
+        NDSConfig.setChartWidth(d);
+    }//GEN-LAST:event_widthFieldActionPerformed
+
+    private void heightFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heightFieldActionPerformed
+        float d=NDSConfig.getChartHeight();
+        try{d=Float.parseFloat(heightField.getText());}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"please enter a number");
+        }
+        NDSConfig.setChartHeight(d);
+
+    }//GEN-LAST:event_heightFieldActionPerformed
+
+    private void plsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plsFieldActionPerformed
+       float d=NDSConfig.levelLabelScale;
+        try{d=Float.parseFloat(plsField.getText());}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"please enter an integer number");
+        }
+        NDSConfig.levelLabelScale=d;
+    }//GEN-LAST:event_plsFieldActionPerformed
+
+    private void bgsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bgsFieldActionPerformed
+        float d=NDSConfig.bandGap;
+        try{d=Float.parseFloat(bgsField.getText());}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"please enter a number");
+        }
+        NDSConfig.bandGap=d;
+
+    }//GEN-LAST:event_bgsFieldActionPerformed
+
+    private void labelFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labelFieldActionPerformed
+        float d=NDSConfig.bandLabelScale;
+        try{d=Float.parseFloat(labelField.getText());}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"please enter a number");
+        }
+        NDSConfig.bandLabelScale=d;
+    }//GEN-LAST:event_labelFieldActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        //if(!skeletonMade) 
+         //   JOptionPane.showMessageDialog(this,"You didn't run the skeleton generator (thats gonna cause trouble later....)");
+    }//GEN-LAST:event_formWindowClosing
+
+    private void include_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_include_ButtonActionPerformed
+      
+        try{
+            EnsdfWrap ew=getCurEnsdf();
+          IncludeDrawing i=new IncludeDrawing(this,true,run,data.getETD(tree.getIndexOfChild(ew,ew)).getBandDrawingControl());
+          i.setTitle("Include a pre-generated Drawing for"+ew.ens.nucleus().A()+ew.ens.nucleus().En());
+          i.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+          i.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this,"You must select a dataset before trying to include bands");
+        }
+    }//GEN-LAST:event_include_ButtonActionPerformed
+    
+    
+    private void drawBandOnly(java.awt.event.MouseEvent evt){
+
+		//back up Control.controls
+		boolean autoAdjust=NDSControl.autoAdjust;
+		boolean needToFindBreaks=NDSControl.needToFindBreaks;
+		boolean hasReference=NDSControl.hasReference;
+		boolean isModified=NDSControl.isModified;
+		boolean isTableControlModified=NDSControl.isTableControlModified;
+		boolean includeAllDrawings=NDSControl.includeAllDrawings;
+		boolean isBandSettingModified=NDSControl.isBandSettingModified;
+		
+    	if(evt.getModifiers()!=InputEvent.BUTTON1_MASK)//left-button, BUTTON2-middle, BUTTON3-right
+    		return;
+    	
+	    if(curEnsdf==null){
+	    	JOptionPane.showMessageDialog(this,"You haven't selected a dataset yet.");
+	    	return;
+	    }    	
+       
+        boolean validOutdir=true;
+        String message="";
+        if(javands.main.Setup.outdir.trim().length()==0){
+        	message="Error: output path is empty. ";           
+        	validOutdir=false;
+        }else{ 
+            File f=new File(javands.main.Setup.outdir.trim());
+        	if(!f.exists()){
+        		message="Error: output path does not exist. ";
+            	validOutdir=false;
+        	}
+        }
+        
+        if(!validOutdir){
+        	message+="Please specify output path.";
+        	run.printMessage(message);
+            JOptionPane.showMessageDialog(this, message);
+            return;
+        }
+        
+        
+        try{
+          	run.clear();
+          	
+        	//tableControl of each etd (dataset) in data will be changed and set in "writeLatex" with auto mode.
+        	MassChain tempData=new MassChain();     
+        	
+        	//default TableControls are set in this call when creating EnsdfTableData object for each data set.
+        	//To use TableControl settings set in this panel which will be applied to TableControls of each data
+        	//set in MassChain "data", tableControl of etd of selected dataset should be set after this call.
+        	
+        	try{
+            	tempData.load(curEnsdf.ens.lines());     		
+        	}catch(IOException e){
+                JOptionPane.showMessageDialog(this, "Error when loading file! Please check your input file.");
+                run.printMessage("Error when loading file! Please check your input file!");
+            }
+
+        	
+        	tempData.getETD(0).setTableControl("LEVEL", curEnsdf.etd.getLevelTableControl());
+        	tempData.getETD(0).setTableControl("GAMMA", curEnsdf.etd.getGammaTableControl());
+        	tempData.getETD(0).setTableControl("DECAY", curEnsdf.etd.getDecayTableControl());
+        	tempData.getETD(0).setTableControl("DELAY", curEnsdf.etd.getDelayTableControl());
+        	
+        	tempData.getETD(0).setDrawingControl("BAND", curEnsdf.etd.getBandDrawingControl());
+        	tempData.getETD(0).setDrawingControl("DECAY", curEnsdf.etd.getDecayDrawingControl());
+    		
+        	NDSConfig.latex=javands.main.Setup.outdir+run.dirSeparator()+Integer.toString(tempData.getA())+".tex";       	
+        	
+        	NDSControl.isBandSettingModified=true;
+        	
+        	NDSControl.drawBandOnly=true;
+        	
+        	run.setData(tempData);
+            run.writeLatex(NDSConfig.latex,tempData);          
+       	
+            NDSControl.drawBandOnly=false;
+            
+        }catch(Exception e){
+        	e.printStackTrace();
+            JOptionPane.showMessageDialog(this, e);
+        }
+        
+        
+        //restore Control.controls
+        NDSControl.autoAdjust=autoAdjust;
+        NDSControl.needToFindBreaks=needToFindBreaks;
+        NDSControl.hasReference=hasReference;
+        NDSControl.isModified=isModified;
+        NDSControl.isTableControlModified=isTableControlModified;
+        NDSControl.includeAllDrawings=includeAllDrawings;
+        NDSControl.isBandSettingModified=isBandSettingModified;
+        
+        //run shell command to create PDF file
+    	String script="NDS.bat";
+    	String path=javands.main.Setup.outdir+"\\"+script;
+    	String os=System.getProperty("os.name").toLowerCase();
+    	
+    	if(os.contains("linux")||os.contains("mac")){
+            script="NDS.sh";
+            path=javands.main.Setup.outdir+"/"+script;
+    	}
+    	
+    	message="\nTo create PDF file, please run the following script:\n";
+    	message+=path;
+    	
+        try{
+            if(evt.getClickCount()>=2){             
+            	run.runScript();
+            }else{
+            	run.printMessage(message);
+            }
+            
+        }catch(Exception e){
+			String msg=e.getMessage();
+			if(msg.length()>0) {
+				run.printMessage(msg);
+				JOptionPane.showMessageDialog(this,msg);						         
+				return;
+			}
+            e.printStackTrace();
+        }
+    }
+/*    
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new NDSFrame().setVisible(true);
+            }
+        });
+    }
+   */ 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JRadioButton Landscape_Button;
+    private javax.swing.JButton Output_Button;
+    private javax.swing.JLabel Path_Label;
+    private javax.swing.JRadioButton Portrait_Button;
+    private javax.swing.JLabel bandGapSizeLabel;
+    private javax.swing.JTable bandTable;
+    private javax.swing.JTextField bgsField;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JTree ensTree;
+    private javax.swing.JTextField heightField;
+    private javax.swing.JLabel heightLabel;
+    private javax.swing.JButton include_Button;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private TableControlPanel tableControlPanel;
+    private HeaderSettingPanel headerSettingPanel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextField labelField;
+    private javax.swing.JLabel labelLabel;
+    private javax.swing.JTextField plsField;
+    private javax.swing.JLabel portraitLabelSizeLabel;
+    private javax.swing.JTextField widthField;
+    private javax.swing.JLabel widthLabel;
+    private JPanel panel;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
+    private JRadioButton radioButton3;
+    private JCheckBox chckbxApplyToAll;
+    private JButton btnDrawBandOnly;
+    private DrawingCreatorPanel drawingCreatorPanel;
+}

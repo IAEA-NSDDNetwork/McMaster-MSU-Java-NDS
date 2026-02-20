@@ -1,0 +1,156 @@
+!
+! ENSDF Richtext forms to latex translation.
+! This file contains only directly translatable items
+!
+! Any latex supported symbol can be added to the ENSDF rich text format
+! by defining it here.
+!
+! It's better to surround math symbols with "\ensuremath{}" than "$$" because
+! it allows nesting.
+!
+!some exceptions of the obvious rules that make things a little easier
+|dj                \ensuremath{\Delta}J
+|b(M1)             B(M1)
+:n:                :N:
+LISE**             LISE\ensuremath{^{++}}
+!These ensure that Adopted Levels are referred to in a consistent manner
+'adopted gammas'   Adopted Gammas
+'Adopted gammas'   Adopted Gammas
+'Adopted Gammas'   Adopted Gammas
+'adopted levels'   Adopted Levels
+'Adopted levels'   Adopted Levels
+'Adopted Levels'   Adopted Levels
+'adopted           Adopted
+'Adopted           Adopted
+levels, gammas'    Levels, Gammas
+Levels, Gammas'    Levels, Gammas
+Levels, gammas     Levels, Gammas
+adopted levels     Adopted Levels
+Adopted levels     Adopted Levels
+adopted gammas     Adopted Gammas
+Adopted gammas     Adopted Gammas
+! greek letters
+|a                 \ensuremath{\alpha}
+|b                 \ensuremath{\beta}
+|c                 \ensuremath{\eta}
+|d                 \ensuremath{\delta}
+|e                 \ensuremath{\varepsilon}
+|f                 \ensuremath{\phi}
+|g                 \ensuremath{\gamma}
+|h                 \ensuremath{\chi}
+|i                 \ensuremath{\iota}
+|j                 \ensuremath{\epsilon}
+|k                 \ensuremath{\kappa}
+|l                 \ensuremath{\lambda}
+|m                 \ensuremath{\mu}
+|n                 \ensuremath{\nu}
+|p                 \ensuremath{\pi}
+|q                 \ensuremath{\theta}
+|r                 \ensuremath{\rho}
+|s                 \ensuremath{\sigma}
+|t                 \ensuremath{\tau}
+|u                 \ensuremath{\upsilon}
+|v                 \ensuremath{?}
+|w                 \ensuremath{\omega}
+|x                 \ensuremath{\xi}
+|y                 \ensuremath{\psi}
+|z                 \ensuremath{\zeta}
+! greek capital letters
+|C                 H
+|D                 \ensuremath{\Delta}
+|F                 \ensuremath{\Phi}
+|G                 \ensuremath{\Gamma}
+|H                 X
+|J                 \ensuremath{\sim}
+|L                 \ensuremath{\Lambda}
+|P                 \ensuremath{\Pi}
+|Q                 \ensuremath{\Theta}
+|R                 P
+|S                 \ensuremath{\Sigma}
+|U                 \ensuremath{\Upsilon}
+|V                 \ensuremath{\nabla}
+|W                 \ensuremath{\Omega}
+|X                 \ensuremath{\Xi}
+|Y                 \ensuremath{\Psi}
+! accents
+~A                 \"{A}
+~E                 \'{E}
+~O                 \"{O}
+~Q                 \~{O}
+~U                 \"{U}
+~a                 \"{a}
+~e                 \'{e}
+~h                 \ensuremath{\hslash}
+~l                 \ensuremath{\lambdabar}
+~o                 \"{o}
+~q                 \~{o}
+~u                 \"{u}
+~'                 \ensuremath{\AA}
+~*                 \ensuremath{\cdot}
+~@                 \ensuremath{\bullet}
+! various symbols
+\|*\               \ensuremath{\times}
+|*                 \ensuremath{\times}
+|\                 \hspace{-0.1cm}
+#                  \#
+^                  \^
+_                  \_
+|?                 \ensuremath{\approx}
+|@                 \ensuremath{\infty}
+|^                 \ensuremath{\uparrow}
+|_                 \ensuremath{\downarrow}
++-                 \ensuremath{\pm}
+!--                 {\textminus}
+!+                  +
+!-                  -
+~#                 \ensuremath{\otimes}
+%                  \%
+|=                 \ensuremath{\neq}
+|>                 \ensuremath{\geq}
+|<                 \ensuremath{\leq}
+|'                 \ensuremath{^\circ}
+'                  '
+<                  \ensuremath{<}
+>                  \ensuremath{>}
+{I                 {\it 
+$                  \$              
+\\                 \\    
+\s                 {\ }
+\href              \href
+! \hbar              \ensuremath{\hbar} !not recognized
+\_                 _
+\                  {\textbackslash}
+\{                 {
+|!                 \textcopyright
+|#                 \textsection
+|$                 e
+|%{                \ensuremath{\sqrt{
+|6{                \ensuremath{\sqrt{
+|%                 \ensuremath{\sqrt{}}
+|6                 \ensuremath{\sqrt{}}
+|&                 \ensuremath{\equiv}
+|(                 \ensuremath{\leftarrow}
+|)                 \ensuremath{\rightarrow}
+|+                 \ensuremath{\pm}
+|-                 \ensuremath{\mp}
+|.                 \ensuremath{\propto}
+|0                 \ensuremath{(}
+|1                 \ensuremath{)}
+|2                 \ensuremath{[}
+|3                 \ensuremath{]}
+|4                 \ensuremath{\langle}
+|5                 \ensuremath{\rangle}
+|7                 \ensuremath{\int}
+|8                 \ensuremath{\prod}
+|9                 \ensuremath{\sum}
+|:                 \ensuremath{\dagger}
+|;                 \ensuremath{\ddagger}
+|[                 \{
+|]                 \}
+|,                 \sfrac{1}{2}
+|\                 \ensuremath{\div}
+|"{                \ensuremath{\bar{
+|"                 \ensuremath{\bar{}}
+||                 \ensuremath{\vert}
+|                  {} 
+&                  \ensuremath{\&}
