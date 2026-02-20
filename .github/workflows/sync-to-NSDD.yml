@@ -17,6 +17,6 @@ jobs:
         env:
           TOKEN: ${{ secrets.THEIR_GITHUB_TOKEN }}
         run: |
-          git remote add their-org https://oauth2:$TOKEN@github.com/IAEA-NSDDNetwork/${{ github.event.repository.name }}.git
-          git push -f --all their-org
-          git push -f --tags their-org
+            git remote add their-org https://${{ secrets.THEIR_GITHUB_TOKEN }}@github.com/IAEA-NSDDNetwork/${{ github.event.repository.name }}.git
+            git push -f --all their-org
+            git push -f --tags their-org
