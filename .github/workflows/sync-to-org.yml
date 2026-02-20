@@ -1,0 +1,35 @@
+name: Sync to FRIB Nuclear Data Group GitHub
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git and Push
+        env:
+          GH_TOKEN: ${{ secrets.ORG_SYNC_TOKEN }}
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          TARGET_REPO="FRIB-Nuclear-Data-Group/${REPO_NAME}"
+          
+          echo "Pushing to: ${TARGET_REPO}"
+          
+          # Configure git to use the token for authentication
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          
+          # Add remote using credential helper instead of inline URL
+          git remote add org "https://github.com/${TARGET_REPO}.git"
+          git config --local http.https://github.com/.extraheader "AUTHORIZATION: basic $(echo -n x-access-token:${GH_TOKEN} | base64 -w 0)"
+          
+          # Push
+          git push -f --all org
+          git push -f --tags org
