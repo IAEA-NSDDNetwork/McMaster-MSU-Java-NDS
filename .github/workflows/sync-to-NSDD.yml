@@ -13,12 +13,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Push to IAEA Organization
+      - name: Configure Git and Push
         env:
           GH_TOKEN: ${{ secrets.THEIR_GITHUB_TOKEN }}
-          REPO_NAME: ${{ github.event.repository.name }}
         run: |
-          echo "Pushing to: IAEA-NSDDNetwork/${REPO_NAME}"
-          git remote add their-org "https://oauth2:${GH_TOKEN}@github.com/IAEA-NSDDNetwork/${REPO_NAME}.git"
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          TARGET_REPO="IAEA-NSDDNetwork/${REPO_NAME}"
+          
+          echo "Pushing to: ${TARGET_REPO}"
+          
+          # Configure git to use the token for authentication
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          
+          # Add remote using credential helper instead of inline URL
+          git remote add their-org "https://github.com/${TARGET_REPO}.git"
+          git config --local http.https://github.com/.extraheader "AUTHORIZATION: basic $(echo -n x-access-token:${GH_TOKEN} | base64 -w 0)"
+          
+          # Push
           git push -f --all their-org
           git push -f --tags their-org
